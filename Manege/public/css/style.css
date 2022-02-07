@@ -1,0 +1,42 @@
+body {
+    font-family: 'sans-serif', 'Nunito';
+    margin: 0;
+    padding: 0; 
+}
+
+.header{
+    height: 3em;
+    background-color: red;
+}
+
+.headertxtcontainer{
+    margin: auto;
+    width: 190px;
+}
+
+.headertxt{
+    margin: 0;
+    padding-top: 10px;
+}
+
+.grid-container{
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    grid-template-rows: 300px 300px 300px; 
+    column-gap: 10px;
+    row-gap: 15px;
+    justify-content: center;
+    margin-top: 6em;
+}
+
+.grid-item{
+    height: 300px;
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 20px;
+}
+
