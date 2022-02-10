@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\manegeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,9 +15,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
-Route::get('/gebruikersOverzicht', function () {
-    return view('gebruikersOverzicht');
+Route::get('/klantenBeheer', function () {
+    return view('klantenBeheer');
 });
+
+Route::get('/afsprakenBeheer', function () {
+    return view('afsprakenBeheer');
+});
+
+Route::get('/paardenBeheer', function () {
+    return view('paardenBeheer');
+});
+
+Route::post('/klantenBeheer', [manegeController::class, 'insertCustomerData']);
+
+

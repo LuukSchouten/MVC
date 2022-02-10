@@ -15,9 +15,18 @@
 
     <div class="header">
         <a href='/'><div class="headertxtcontainer">
-            <p class="headertxt">Manege administratie app</p>
+            <p>Manege administratie app</p>
         </div></a>
     </div>
 
     {{ $content }}
     
+
+    <div class="footer">
+        <p class="footertxt">
+            Luuk Schouten 2022 &copy;
+        </p>
+    </div>
+
+    </body>
+</html>

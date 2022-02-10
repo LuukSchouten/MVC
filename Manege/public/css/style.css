@@ -1,28 +1,47 @@
-body {
+body, *{
     font-family: 'sans-serif', 'Nunito';
     margin: 0;
     padding: 0; 
 }
-
 .header{
-    height: 3em;
+    padding: 10px;
+    box-sizing: border-box;
     background-color: red;
 }
 
 .headertxtcontainer{
     margin: auto;
-    width: 190px;
+    width: max-content;
 }
 
-.headertxt{
-    margin: 0;
-    padding-top: 10px;
+.main{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    background-color: red;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    position:fixed;
+    bottom:0px;
+    padding: 10px 0px;
+    width:100%;
+    box-sizing: border-box;
+    background-color:red;
+}
+
+.footertxt{
+    width: max-content;
 }
 
 .grid-container{
     display: grid;
     grid-template-columns: 300px 300px 300px;
-    grid-template-rows: 300px 300px 300px; 
+    grid-template-rows: 300px; 
     column-gap: 10px;
     row-gap: 15px;
     justify-content: center;
@@ -40,3 +59,27 @@ body {
     border-radius: 20px;
 }
 
+form{
+    height: inherit;
+    width: inherit;
+}
+
+.inputcontainer{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 1em;
+    margin-right: 1em;
+}
+
+.inputfields{
+    border: 2px solid black;
+}
+
+.submitbtn{
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    width: 130px;
+    margin: 0px auto 0px auto;
+}
