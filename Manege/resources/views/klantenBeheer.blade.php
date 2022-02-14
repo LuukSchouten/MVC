@@ -2,6 +2,7 @@
     <x-slot name="content">
         <div class="main">
             <form action="klantenBeheer" method="POST">
+                @csrf
                 <div class="inputcontainer">
                     <label for="naam">Naam:</label>
                     <input type="text" id="naam" class="inputfields" required>

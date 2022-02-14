@@ -8,6 +8,6 @@ class manegeController extends Controller
 {
     //
     function insertCustomerData(Request $req){
-
+        print_r($req->input());
     }
 }
