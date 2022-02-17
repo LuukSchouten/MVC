@@ -19,6 +19,9 @@ class manegeController extends Controller
 
         $klant = klanten::create([
             'naam' => $request->naam,
+            'achternaam' => $request->achternaam,
+            'tel' => $request->tel,
+            'paard_id' =>$request->paard_id
         ]);
 
         return redirect()->back();

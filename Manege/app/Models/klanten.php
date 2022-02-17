@@ -19,8 +19,9 @@ class klanten extends Model
 
     protected $fillable = [
         'naam',
-        'email',
-        'password',
+        'achternaam',
+        'tel',
+        'paard_id'
     ];
     
     public $timestamps = false;
