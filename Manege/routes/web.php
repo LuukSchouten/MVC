@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\manegeController;
+use App\Http\Controllers\klantenController;
+use App\Http\Controllers\paardenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,18 +19,16 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/klantenBeheer', function () {
-    return view('klantenBeheer');
-});
+Route::get('/klantenBeheer', [klantenController::class, 'getUserData']);
 
-Route::get('/afsprakenBeheer', function () {
-    return view('afsprakenBeheer');
-});
+Route::get('/afsprakenBeheer', [paardenController::class, 'getHorse']);
+
+Route::post('/afsprakenBeheer', [afsprakenController::class, 'createAfspraak']);
 
 Route::get('/paardenBeheer', function () {
     return view('paardenBeheer');
 });
 
-Route::post('/klantenBeheer', [manegeController::class, 'insertCustomerData']);
+Route::post('/paardenBeheer', [paardenController::class, 'addHorse']);
 
 

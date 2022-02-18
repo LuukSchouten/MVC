@@ -3,6 +3,11 @@ body, *{
     margin: 0;
     padding: 0; 
 }
+
+h1{
+    text-align: center;
+}
+
 .header{
     padding: 10px;
     box-sizing: border-box;

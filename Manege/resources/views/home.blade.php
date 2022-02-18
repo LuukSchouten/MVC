@@ -7,9 +7,5 @@
             <a href="/afsprakenBeheer"><div class="grid-item">Afspraken beheer</div></a>
         </div>
 
-
-        </body>
-    </html>
-
     </x-slot>
 </x-layout>
