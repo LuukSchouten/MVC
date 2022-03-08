@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\klantenController;
 use App\Http\Controllers\paardenController;
+use App\Http\Controllers\afsprakenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,19 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/klantenBeheer', [klantenController::class, 'getUserData']);
+Route::get('/klantenBeheer', function() {
+    return view('klantenBeheer');
+});
+
+Route::get('/klantenOverzicht', [klantenController::class, 'showUsers']);
+
+Route::get('klantToevoegen', function () {
+    return view('klantToevoegen');
+});
+
+Route::post('klantToevoegen', [klantenController::class, 'createUser']);
+
+Route::get('klant/{klant}', [klantenController::class, 'getUserData']);
 
 Route::get('/afsprakenBeheer', [paardenController::class, 'getHorse']);
 

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class klanten extends Model
+class Klanten extends Model
 {
     use HasFactory;
 
@@ -17,12 +17,12 @@ class klanten extends Model
      * @var array<int, string>
      */
 
-    protected $fillable = [
-        'naam',
-        'achternaam',
-        'tel',
-        'paard_id'
-    ];
+     protected $guarded = [];
+    // protected $fillable = [
+    //     'naam',
+    //     'achternaam',
+    //     'tel',
+    // ];
     
     public $timestamps = false;
 }

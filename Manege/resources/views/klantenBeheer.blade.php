@@ -2,9 +2,8 @@
     <x-slot name="content">
 
         <div class="grid-container">
-            <?php foreach($klanten as $klant){?>
-                <a href="klantenBeheer/{{$klant->id}}"><div class="grid-item">{{$klant->naam}}</div>
-            <?php } ?>
+            <a href="/klantenOverzicht"><div class="grid-item">Klanten overzicht</div></a>
+            <a href="/klantToevoegen"><div class="grid-item">Klant toevoegen</div></a>
         </div>
 
     </x-slot>
