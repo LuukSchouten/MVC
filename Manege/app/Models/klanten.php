@@ -17,12 +17,11 @@ class Klanten extends Model
      * @var array<int, string>
      */
 
-     protected $guarded = [];
-    // protected $fillable = [
-    //     'naam',
-    //     'achternaam',
-    //     'tel',
-    // ];
+    protected $fillable = [
+        'naam',
+        'achternaam',
+        'tel',
+    ];
     
     public $timestamps = false;
 }

@@ -5,6 +5,7 @@ use App\Http\Controllers\klantenController;
 use App\Http\Controllers\paardenController;
 use App\Http\Controllers\afsprakenController;
 
+use App\Models\Klanten;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,7 +33,11 @@ Route::get('klantToevoegen', function () {
 
 Route::post('klantToevoegen', [klantenController::class, 'createUser']);
 
-Route::get('klant/{klant}', [klantenController::class, 'getUserData']);
+Route::get('klant/{klant}', function($id) {
+    return view('klant', [
+        'klant' => Klanten::findOrFail($id)
+    ]);
+});
 
 Route::get('/afsprakenBeheer', [paardenController::class, 'getHorse']);
 

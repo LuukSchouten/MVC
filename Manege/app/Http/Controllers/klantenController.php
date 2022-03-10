@@ -33,17 +33,11 @@ class klantenController extends Controller
 
     //READ
     public function showUsers(){
-        $users = DB::table('klanten')->select('id', 'naam','achternaam','tel')->get();
-
-        return view('klantenOverzicht')->with('klanten', $users);
+        return view('klantenOverzicht', [
+            'klanten' => Klanten::all()
+        ]);
     }
 
-    public function getUserData(Klanten $klanten){  
-        var_dump($klanten);
-        // return view('klant', [
-        //     'kutje' => $klanten
-        // ]);
-    }
 
     //UPDATE
 
