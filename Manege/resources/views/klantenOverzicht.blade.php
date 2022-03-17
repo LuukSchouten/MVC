@@ -2,7 +2,7 @@
     <x-slot name="content">
 
         <div class="grid-container">
-            <?php foreach($klanten as $klant){?>
+            <?php foreach($klant as $klant){?>
                 <a href="klant/{{$klant->id}}"><div class="grid-item">{{$klant->naam}}</div>
             <?php } ?>
         </div>

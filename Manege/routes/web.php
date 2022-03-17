@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\klantenController;
+use App\Http\Controllers\KlantenController;
 use App\Http\Controllers\paardenController;
 use App\Http\Controllers\afsprakenController;
 
@@ -21,22 +21,15 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/klantenBeheer', function() {
+Route::get('/klantenBeheer', function (){
     return view('klantenBeheer');
 });
 
-Route::get('/klantenOverzicht', [klantenController::class, 'showUsers']);
+Route::get('/klantenOverzicht', [KlantenController::class, 'overview']);
 
-Route::get('klantToevoegen', function () {
-    return view('klantToevoegen');
-});
-
-Route::post('klantToevoegen', [klantenController::class, 'createUser']);
-
-Route::get('klant/{klant}', function($id) {
-    return view('klant', [
-        'klant' => Klanten::findOrFail($id)
-    ]);
+Route::get('/klant/{klant}', function($id){
+    $klant = Klanten::findOrFail($id);
+    return view('klant')->with('klant', $klant);
 });
 
 Route::get('/afsprakenBeheer', [paardenController::class, 'getHorse']);

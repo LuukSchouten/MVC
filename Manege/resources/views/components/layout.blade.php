@@ -14,9 +14,14 @@
     <body class="antialiased">
 
     <div class="header">
-        <a href='/'><div class="headertxtcontainer">
-            <p>Manege administratie app</p>
-        </div></a>
+        <div class="backButton">
+            <a onclick="history.back()">Ga terug</a>
+        </div>
+        <a href='/'>
+            <div class="headertxtcontainer">
+                    <p>Manege administratie app</p>
+            </div>
+        </a>
     </div>
 
     {{ $content }}

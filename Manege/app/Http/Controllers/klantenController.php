@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Klanten;
 
-class klantenController extends Controller
+class KlantenController extends Controller
 {
     /**
      * Sla een nieuwe klant op in de database.
@@ -18,7 +18,7 @@ class klantenController extends Controller
      */
 
     //CREATE
-    public function createUser(){
+    public function createUser(Request $request){
 
         $data = $request->input();
 
@@ -29,18 +29,22 @@ class klantenController extends Controller
         ]);
 
         return redirect()->back();
+        echo 'test';
     }
 
     //READ
-    public function showUsers(){
-        return view('klantenOverzicht', [
-            'klanten' => Klanten::all()
-        ]);
+
+    public function overview(){
+        $klant = Klanten::all();
+        return view('klantenOverzicht')->with('klant', $klant);
     }
-
-
     //UPDATE
 
     //DELETE
-    
+    public function deleteUser($id){
+        $klant = Klanten::FindOrFail($id);
+        $klant->delete();
+
+        return redirect('klantenOverzicht');
+    }
 }

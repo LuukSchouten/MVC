@@ -8,6 +8,11 @@ h1{
     text-align: center;
 }
 
+.backButton{
+    position: absolute;
+    cursor: pointer;
+}
+
 .header{
     padding: 10px;
     box-sizing: border-box;
@@ -87,4 +92,8 @@ form{
     display: block;
     width: 130px;
     margin: 0px auto 0px auto;
+}
+
+.btnContainer{
+    margin: 10px 0px;
 }
