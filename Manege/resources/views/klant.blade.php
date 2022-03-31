@@ -6,12 +6,19 @@
            <div style="padding: 1em;">Achternaam: {{$klant->achternaam}}</div>
            <div style="padding: 1em;">Tel: {{$klant->tel}}</div>
 
+
             <div class="btnContainer">
                 <button type="submit" class="submitbtn" name="updateKlant">Klant aanpassen</button>
             </div>
+
             <div class="btnContainer">
-                <button type="submit" class="submitbtn" name="deleteKlant">Klant verwijderen</button>
+            <form method="POST" action='/klant/{{ $klant->id }}'>
+                @csrf
+                @method('DELETE')
+                    <button type="submit" class="submitbtn" name="deleteKlant">Klant verwijderen</button>
+            </form>
             </div>
+
         </div>
 
 

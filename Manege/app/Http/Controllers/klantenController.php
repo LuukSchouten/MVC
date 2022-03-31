@@ -33,18 +33,20 @@ class KlantenController extends Controller
     }
 
     //READ
-
     public function overview(){
         $klant = Klanten::all();
         return view('klantenOverzicht')->with('klant', $klant);
     }
     //UPDATE
 
-    //DELETE
-    public function deleteUser($id){
-        $klant = Klanten::FindOrFail($id);
-        $klant->delete();
+    
 
-        return redirect('klantenOverzicht');
+    //DELETE
+
+    //make function that deletes user from database 
+    public function deleteUser($id){
+        $klant = Klanten::find($id);
+        $klant->delete();
+        return redirect()->back();
     }
 }

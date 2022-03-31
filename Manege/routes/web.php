@@ -32,6 +32,12 @@ Route::get('/klant/{klant}', function($id){
     return view('klant')->with('klant', $klant);
 });
 
+Route::delete('/klant/{klant}', function($id){
+    $klant = Klanten::findOrFail($id);
+    $klant->delete();
+    return redirect('/klantenOverzicht');
+});
+
 Route::get('/afsprakenBeheer', [paardenController::class, 'getHorse']);
 
 Route::post('/afsprakenBeheer', [afsprakenController::class, 'createAfspraak']);
