@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost'),
+    'url' => env('APP_URL', 'https://app-ddfe8c19-064e-46eb-82ae-f5e059ae7c2d.cleverapps.io/'),
 
     'asset_url' => env('ASSET_URL', null),
 
