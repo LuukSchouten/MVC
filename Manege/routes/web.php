@@ -38,6 +38,13 @@ Route::delete('/klant/{klant}', function($id){
     return redirect('/klantenOverzicht');
 });
 
+Route::get('/klantToevoegen', function(){
+    return view('/klantToevoegen');
+});
+
+//make a route that posts a new user to the database
+Route::post('/klantToevoegen', [KlantenController::class, 'createUser']);
+
 Route::get('/afsprakenBeheer', [paardenController::class, 'getHorse']);
 
 Route::post('/afsprakenBeheer', [afsprakenController::class, 'createAfspraak']);
@@ -45,6 +52,8 @@ Route::post('/afsprakenBeheer', [afsprakenController::class, 'createAfspraak']);
 Route::get('/paardenBeheer', function () {
     return view('paardenBeheer');
 });
+
+//
 
 Route::post('/paardenBeheer', [paardenController::class, 'addHorse']);
 

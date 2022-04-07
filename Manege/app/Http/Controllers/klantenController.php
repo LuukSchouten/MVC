@@ -37,6 +37,7 @@ class KlantenController extends Controller
         $klant = Klanten::all();
         return view('klantenOverzicht')->with('klant', $klant);
     }
+    
     //UPDATE
 
     
