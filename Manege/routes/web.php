@@ -32,6 +32,19 @@ Route::get('/klant/{klant}', function($id){
     return view('klant')->with('klant', $klant);
 });
 
+//make a route to klantaanpassen 
+Route::get('/klantAanpassen/{klant}', function($id){
+    $klant = Klanten::findOrFail($id);
+    return view('/klantAanpassen')->with('klant', $klant);
+});
+
+//make a post route to klantaanpassen 
+Route::post('/klantAanpassen/{klant}', function($id){
+    $klant = Klanten::findOrFail($id);
+    $klant->update(request()->all());
+    return redirect('/klantenOverzicht');
+});
+
 Route::delete('/klant/{klant}', function($id){
     $klant = Klanten::findOrFail($id);
     $klant->delete();

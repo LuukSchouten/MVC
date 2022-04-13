@@ -8,7 +8,9 @@
 
 
             <div class="btnContainer">
-                <button type="submit" class="submitbtn" name="updateKlant">Klant aanpassen</button>
+                <a href="/klantAanpassen/{{$klant->id}}">
+                    <button type="submit" class="submitbtn" name="updateKlant">Klant aanpassen</button>
+                </a>
             </div>
 
             <div class="btnContainer">
