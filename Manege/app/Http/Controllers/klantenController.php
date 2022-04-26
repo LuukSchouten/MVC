@@ -28,8 +28,7 @@ class KlantenController extends Controller
             'tel' => $data['tel'],
         ]);
 
-        return redirect()->back();
-        echo 'test';
+        return redirect('/klantenOverzicht');
     }
 
     //READ

@@ -6,6 +6,9 @@ use App\Http\Controllers\paardenController;
 use App\Http\Controllers\afsprakenController;
 
 use App\Models\Klanten;
+use App\Models\paarden;
+use App\Models\afspraken;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,6 +23,8 @@ use App\Models\Klanten;
 Route::get('/', function () {
     return view('home');
 });
+
+////////////////////////////////////////////////////////////////////////////////////
 
 Route::get('/klantenBeheer', function (){
     return view('klantenBeheer');
@@ -58,16 +63,68 @@ Route::get('/klantToevoegen', function(){
 //make a route that posts a new user to the database
 Route::post('/klantToevoegen', [KlantenController::class, 'createUser']);
 
-Route::get('/afsprakenBeheer', [paardenController::class, 'getHorse']);
+////////////////////////////////////////////////////////////////////////////////////
 
-Route::post('/afsprakenBeheer', [afsprakenController::class, 'createAfspraak']);
-
-Route::get('/paardenBeheer', function () {
-    return view('paardenBeheer');
+Route::get('/paardenBeheer', function(){
+    return view('/paardenBeheer');
 });
 
-//
+Route::get('/paardToevoegen', function () {
+    return view('paardToevoegen');
+});
 
-Route::post('/paardenBeheer', [paardenController::class, 'addHorse']);
+//make route to paardenoverzicht
+Route::get('/paardenOverzicht', [paardenController::class, 'overview']);
+
+Route::get('/paard/{paard}', function($id){
+    $paard = Paarden::findOrFail($id);
+    return view('paard')->with('paard', $paard);
+});
+
+Route::post('/paardToevoegen', [paardenController::class, 'addHorse']);
+
+//make a route to paardAanpassen
+Route::get('/paardAanpassen/{paard}', function($id){
+    $paard = Paarden::findOrFail($id);
+    return view('paardAanpassen')->with('paard', $paard);
+});
+
+//make a post route to paardAanpassen
+Route::post('/paardAanpassen/{paard}', function($id){
+    $paard = Paarden::findOrFail($id);
+    $paard->update(request()->all());
+    return redirect('/paardenOverzicht');
+}); 
+
+//make a delete route to paard.blade.php
+Route::delete('/paard/{paard}', function($id){
+    $paard = Paarden::findOrFail($id);
+    $paard->delete();
+    return redirect('/paardenOverzicht');
+});
+
+
+////////////////////////////////////////////////////////////////////////////////////
+
+//make route to afsprakenBeheer
+Route::get('/afsprakenBeheer', function(){
+    return view('/afsprakenBeheer');
+});
+
+//make route to afsprakenoverzicht
+Route::get('/afsprakenOverzicht', [afsprakenController::class, 'overview']);
+
+//return afsprakenbeheer and pass horses to view
+Route::get('/afspraakToevoegen', function(){
+    $paard = Paarden::all();
+    $klant = Klanten::all();
+    //return view with paarden and klanten 
+    return view('afspraakToevoegen')->with('paard', $paard)->with('klant', $klant);
+});
+
+//make post route to afspraakToevoegen and pass the request to the controller
+Route::post('/afspraakToevoegen', [afsprakenController::class, 'addAppointment']);
+
+
 
 

@@ -18,23 +18,40 @@ class paardenController extends Controller
      */
 
     //CREATE
-    public function addHorse(Request $request){
-
-        paarden::create([
-            'naam' => $request->naam,
-            'schofthoogte' => $request->schofthoogte,
-            'gebruik' => $request->gebruik,
-            'lvh' =>$request->lvh
+    
+    //create addhorse function
+    public function addhorse(Request $request)
+    {
+        //validate the data
+        $this->validate($request, [
+            'naam' => 'required|max:255',
+            'schofthoogte' => 'required|max:255',
+            'gebruik' => 'required|max:255',
+            'lvh' => 'required|max:255',
         ]);
 
-        return redirect()->back();
+        //store in the database
+        $horse = new paarden;
+        $horse->naam = $request->naam;
+        $horse->schofthoogte = $request->schofthoogte;
+        $horse->gebruik = $request->gebruik;
+        $horse->lvh = $request->lvh;
+        $horse->save();
 
+        //redirect to another page
+        return redirect('/paardenOverzicht');
     }
 
     //READ
     public function getHorse(){
         $horse = DB::table('paarden')->select('id','naam','schofthoogte', 'gebruik', 'lvh')->get();
-    return view('afsprakenBeheer')->with('horses', $horse);
+        return view('afsprakenBeheer')->with('horses', $horse);
+    }
+
+    //make overview function
+    public function overview(){
+        $paard = Paarden::all();
+        return view('paardenOverzicht')->with('paard', $paard);
     }
 
     //UPDATE
