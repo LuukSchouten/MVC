@@ -3,7 +3,7 @@
 
         <div class="grid-container">
             <?php foreach($afspraak as $afspraak){?>
-                <a href="klant/{{$afspraak->id}}"><div class="grid-item">{{$afspraak->datum}}</div>
+                <a href="afspraak/{{$afspraak->id}}"><div class="grid-item">{{$afspraak->datum}}</div>
             <?php } ?>
         </div>
 

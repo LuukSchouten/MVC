@@ -24,4 +24,16 @@ class Afspraken extends Model
     ];
     
     public $timestamps = false;
+
+    //make a relation between the afspraken and the klanten table
+    public function klanten()
+    {
+        return $this->belongsTo('App\Models\Klanten', 'klant_id');
+    }
+
+    //make a relation between the afspraken and the paarden table
+    public function paarden()
+    {
+        return $this->belongsTo('App\Models\Paarden', 'paard_id');
+    } 
 }

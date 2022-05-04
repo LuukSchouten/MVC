@@ -122,9 +122,32 @@ Route::get('/afspraakToevoegen', function(){
     return view('afspraakToevoegen')->with('paard', $paard)->with('klant', $klant);
 });
 
+//make view for individual afspraak 
+Route::get('/afspraak/{afspraak}', function($id){
+    $afspraak = Afspraken::findOrFail($id);
+    return view('afspraak')->with('afspraak', $afspraak);
+});
+
 //make post route to afspraakToevoegen and pass the request to the controller
 Route::post('/afspraakToevoegen', [afsprakenController::class, 'addAppointment']);
 
+//make a route to afspraakAanpassen and pass the required data to the view
+Route::get('/afspraakAanpassen/{afspraak}', function($id){
+    $afspraak = Afspraken::findOrFail($id);
+    $paard = Paarden::all();
+    $klant = Klanten::all();
+    return view('afspraakAanpassen')->with('afspraak', $afspraak)->with('paard', $paard)->with('klant', $klant);
+});
+
+//make a post route to afspraakAanpassen and pass the request to the controller
+Route::post('/afspraakAanpassen/{afspraak}', [afsprakenController::class, 'updateAppointment']);
+
+//make a delete route to afspraak.blade.php
+Route::delete('/afspraak/{afspraak}', function($id){
+    $afspraak = Afspraken::findOrFail($id);
+    $afspraak->delete();
+    return redirect('/afsprakenOverzicht');
+});
 
 
 

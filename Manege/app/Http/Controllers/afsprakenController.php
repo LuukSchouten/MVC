@@ -34,11 +34,18 @@ class afsprakenController extends Controller
         //return view('afsprakenOverzicht') with ('afspraken', afspraken::all()); as $afspraak in afspraken::all()
         $afspraak = afspraken::all();
         return view('afsprakenOverzicht')->with('afspraak', $afspraak);
-
-
     }
 
     //UPDATE
+    public function updateAppointment(Request $request, $id)
+    {
+        $afspraak = afspraken::findOrFail($id);
+        $afspraak->klant_id = $request->input('klant_id');
+        $afspraak->paard_id = $request->input('paard_id');
+        $afspraak->datum = $request->input('datum');
+        $afspraak->save();
+        return redirect('/afsprakenBeheer');
+    }
 
     //DELETE
 
